@@ -1,0 +1,58 @@
+<br>
+<br>
+
+
+<div class="container">
+    <h5>{{title}}: &nbsp;&nbsp;<small>{{product.name}}</small></h5>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-sm-7">
+      <table class="table table-bordered table-sm table-hover table-striped">
+          <thead class="thead-primary">
+            <tr>
+              <th style="font-size: 14px" scope="col">Description:</th>
+              <th style="font-size: 14px" scope="col">Price:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-size: 14px" scope="row">{{product.color}}</td>
+              <td style="font-size: 14px">{{product.price | currency:'USD':'symbol'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+        <p>Click <i>Order Key</i> to download your product order key tracking number.</p>
+        <span style="margin-left:60px"><a href="#" class="btn btn-info btn-sm" role="button"><i class="fa fa-key" style="font-size:34px;color:red"></i>&nbsp;Order Key Tracking</a></span>
+  </div>
+  
+  <div class="col-sm-5">
+      <span style="margin-left:50px">
+      <!--<img src="/assets/Blueprint-TFA-FINN-TLJ-REY.jpg" style="width: 540px">-->
+          <img src="/assets/sky-tec-starter-200.png">&nbsp;&nbsp;
+          <strong>Sky-tec Starter 149nl</strong>
+          <small></small>
+      </span>
+      
+          
+      <div class="text-center">part# : &nbsp;&nbsp;{{product.name}}</div>
+  </div>
+</div>
+
+
+
+<!--<form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
+  
+                  <img [src]="imageUrl" class="imgArea">
+                  <div class="image-upload">
+                      <label for="file-input">
+                          <img src="upload.jpg" />
+                      </label>
+              
+                      <input id="file-input" #Image type="file" (change)="handleFileInput($event.target.files)" />
+                      <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !imageForm.valid"><i
+                              class="material-icons">save</i></button>
+                  </div>
+              </form>-->

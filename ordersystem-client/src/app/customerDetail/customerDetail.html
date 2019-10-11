@@ -1,0 +1,51 @@
+<br>
+<div class="row">
+    &nbsp;&nbsp;&nbsp;
+    <h6>{{title}}: <span style="margin-left: 107px">{{customer.fullName}}</span></h6>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <label>Address:</label>
+    </div>
+    <div class="col-md-5 end">
+        <span style="margin-left: 40px">{{address}}</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <label>Gets Discount:</label>
+    </div>
+    <div class="col-md-3 end">
+        <span style="margin-left: 42px">{{customer.getsDiscount ? 'Yes' : 'No'}}</span>   
+    </div>
+</div>
+<br/>
+<discount *ngIf="customer.getsDiscount" 
+    [customerDiscount]="customer.discount"
+    (update)="updateDiscount($event)"></discount>
+    
+<div class="row" *ngIf="orders && orders.length > 0">
+    <div class="col-md-12"><br>
+        <h6>Orders</h6>
+        <table class="table table-hover table-bordered table-sm bg-transparent">
+            <thead style="font-size: 12px">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Total Items</th>
+                    <th>Total Sale</th>
+                </tr>
+            </thead>
+            <tbody style="font-size: 12px">
+                <tr *ngFor="let order of orders">
+                    <td>
+                        <a href="#/orders/{{order.id}}">{{order.id}}</a>
+                    </td>
+                    <td>{{order.orderDate}}</td>
+                    <td>{{order.totalItems}}</td>
+                    <td>{{order.totalSale | currency:'USD':'symbol'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

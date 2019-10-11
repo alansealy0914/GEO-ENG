@@ -1,0 +1,63 @@
+<br>
+<div class="row">
+&nbsp;&nbsp;&nbsp;<h5>{{title}}</h5>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="search" style="box-shadow: 0px 8px 16px 0px rgba(14, 13, 13, 0.342); font-size: 12px" placeholder="Order Name/Id" [(ngModel)]="filter">
+                </div> 
+            </div>
+            &nbsp;<button type="button" (click)="goToCreateOrder()" class="btn btn-info btn-sm" style="box-shadow: 0px 8px 16px 0px rgba(14, 13, 13, 0.342); font-size: 12px">Create Order</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-sm table-hover table-bordered bg-transparent">
+            <thead style="font-size: 12px">
+                <tr>
+                    <th>
+                        <a [href]="" (click)="sortOrders('id')">
+                            Order Id 
+                            <span *ngIf="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span *ngIf="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a [href]="" (click)="sortOrders('customerName')">
+                            Customer Name
+                            <span *ngIf="sortType == 'customerName' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span *ngIf="sortType == 'customerName' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a [href]="" (click)="sortOrders('totalItems')">
+                            Total Items
+                            <span *ngIf="sortType == 'totalItems' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span *ngIf="sortType == 'totalItems' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a [href]="" (click)="sortOrders('totalSale')">
+                            Total Sale 
+                            <span *ngIf="sortType == 'totalSale' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span *ngIf="sortType == 'totalSale' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody style="font-size: 12px">
+                <tr *ngFor="let order of filteredOrders | filter:filter | paginate: { itemsPerPage: 2, currentPage: p }; let i = index">
+                    <td style="font-size: 14px"><a [routerLink]="['/orders', order.id]">{{order.id}}</a></td>
+                    <td style="font-size: 14px">{{order.customerName}}</td>
+                    <td style="font-size: 14px">{{order.totalItems}}</td>
+                    <td style="font-size: 14px">{{order.totalSale | currency:'USD':'symbol'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <small><pagination-controls (pageChange)="p = $event"></pagination-controls></small>
+    </div>
+</div>
